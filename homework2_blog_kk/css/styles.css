@@ -1,0 +1,144 @@
+*{
+box-sizing: border-box;
+margin: 0;
+}
+
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f0efef;
+  scroll-behavior:smooth;
+
+}
+
+#logo1{
+  padding-left:1em;
+  padding-top:0.5em;
+  width:100px;
+  float:left;
+}
+
+.logo2{
+  background-color: blue;
+  width:100px;
+}
+
+.photo1{
+  object-fit:cover;
+}
+.about{
+  font-size:1em;
+  font-weight: lighter;
+  color:#033048;
+}
+
+.footerfont{
+  background-color: #f9e42e;
+  color:white;/*yellow*/
+  }
+
+article{
+  padding:1em;
+
+}
+
+
+body{
+      min-height:100vh;
+      display: grid;
+      grid-template-columns: 65% 35%;
+      grid-auto-rows: 10vh auto minmax(10vh,20vh);
+      grid-column-gap: 1em;
+      grid-template-areas:
+      "header header"
+      "main aside"
+      "footer footer"
+
+    }
+
+    header {
+      height:10vh;
+      background-color: #033048; /*dark blue*/
+      grid-area: header;
+      padding: 1rem
+    }
+
+    nav{
+      padding-right:1em;
+      text-align: right;
+      font-size:1em;
+      margin:10px;
+    }
+
+    a{padding:2em;
+      color: yellow;
+      text-decoration: none;
+      font-weight:bold;
+    }
+h2{
+  font-size:2em;
+  font-weight: bold;
+  color:#033048;
+  padding-bottom:1em;
+}
+
+h3{
+  font-size:2em;
+  font-weight: bolder;
+  color:#033048;
+}
+
+Li{
+  font-size:1em;
+  font-weight:lighter;
+  color:#033048;
+}
+
+section{
+
+}
+
+h6{
+  float:right;
+  font-size:1em;
+  font-weight: bold;
+  color:#033048;
+}
+
+
+p{
+  font-size:1.1em;
+  font-weight: lighter;
+  color:#121212; /*almost black*/
+  padding-top:1em;
+}
+
+P:first-letter{
+  float:left;
+  font-size:30px;
+  margin:1px;
+}
+
+    main {
+      background-color: #606161; /*light grey*/
+      grid-area: main;
+      padding: 1rem;
+    }
+    aside {
+      background-color:#606161; /*light grey*/
+      grid-area: aside;
+      display: flex;
+      flex-direction:column;
+      /* We can accomplish our layout with flex-wrap and setting the width of the elements inside */
+      flex-wrap: wrap;
+      padding:2em;
+    }
+
+    footer {
+      object-position:center;
+      font-size:2em;
+      color:white;
+      font-weight:bolder;
+      grid-area: footer;
+      background-color:yellow;
+    }
