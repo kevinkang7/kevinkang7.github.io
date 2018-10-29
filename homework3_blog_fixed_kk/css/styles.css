@@ -1,0 +1,284 @@
+*{
+box-sizing: border-box;
+margin: 0;
+}
+
+
+html {
+  font-family: "Open Sans", sans-serif;
+  background-color: #f0efef;
+  color:#606161;
+  scroll-behavior:smooth;
+}
+
+body{
+      display: grid;
+      grid-template-columns: 65% 35%;
+      /* grid-auto-rows: 10vh auto minmax(10vh,20vh); */
+      grid-column-gap: 2rem;
+      grid-template-areas:
+      "header header"
+      "main aside"
+      "cta cta"
+      "footer footer"
+    }
+
+    main {
+      /* background-color: #606161; /*light grey*/ */
+      grid-area: main;
+      padding: 1rem;
+    }
+    aside {
+      /* background-color:#606161; /*light grey*/ */
+      grid-area: aside;
+      padding: 2rem 2rem 2rem 0;
+    }
+
+#logo1{
+  height:2rem;
+  float:left;
+}
+
+.logo2{
+  height:2rem;
+  margin:1rem;
+}
+
+.photo1{
+  width:100%
+  object-fit:cover;
+}
+.about{
+  font-size:1em;
+  font-weight: lighter;
+  color:#033048;
+}
+
+.footerfont{
+  background-color: #f9e42e;
+  color:white;/*yellow*/
+  }
+
+article{
+  padding:1em;
+}
+    /* header { */
+      /* height:10vh;  height: 2rem? */
+      /* background-color: #033048; /*dark blue*/
+      /* grid-area: header;
+      padding: 1rem */
+    /* } */
+      header {
+        /* height:10vh;  height: 2rem? */
+        background-color: #033048; /*dark blue*/
+        grid-area: header;
+        padding: 2rem;
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+      }
+
+    /* Jen:
+    header nav {
+    }
+
+justify-conetent: space-between
+
+make all header in the center;
+
+align-items: center
+    */
+
+
+
+
+  /* header nav{
+      padding-right:1em;
+      text-align: right;
+      font-size:1em;
+      margin:10px;
+      } */
+/* Jen's way doing it:       */
+  header nav{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+
+    }
+
+
+  header a{padding:2em;
+      color: yellow;
+      text-decoration: none;
+      font-weight:bold;
+    }
+main h2{
+  font-size:2em;
+  font-weight: bold;
+  color:#033048;
+  padding-bottom:1em;
+}
+
+aside h3,
+aside nav,
+aside p {
+margin-bottom: 1rem;
+}
+
+aside nav a {
+  display: block;
+  text-decoration: none;
+  color:#033048;
+}
+
+section{
+
+}
+
+h6{
+  float:right;
+  font-size:1em;
+  font-weight: bold;
+  color:#033048;
+}
+
+
+p{
+  font-size:1.1em;
+  font-weight: lighter;
+  color:#121212; /*almost black*/
+  padding-top:1em;
+}
+
+ article p:first-of-type::first-letter{
+  float:left;
+  font-size:2rem;
+  font-weight:900;
+  margin-right: .25em;
+}
+
+article a {
+
+  display: block;
+  text-align: right;
+  border-bottom: 1px solid;
+}
+aside div{
+  background: white;
+  font-size: 2rem;
+  font-weight:800;
+  text-align: center;
+  padding: 1rem;
+  min-height:80vh;
+}
+
+#cta{
+  grid-area: cta;
+  background-color: yellow;
+  padding: 2rem;
+  text-align: center;
+}
+
+#cta button{
+  background-color: #033048;
+  font-size:1.5em;
+  font-weight:600;
+  color:white;
+  padding: 1rem 1.5rem;
+  border-color:transparent;
+  border-radius:10px;
+
+
+}
+
+    footer {
+      text-align: center;
+      background-color: #033048;
+      grid-area: footer;
+      padding:2rem;
+    }
+
+
+    footer::after {
+      content: "© 2018 Relaxr. All rights reserved.";
+      color: white;
+      font-size: 90%;
+    }
+
+    @media (max-width: 800px) {
+
+      body{
+            display: grid;
+            grid-template-areas:
+            "header"
+            "main"
+            "aside"
+            "cta"
+            "footer";
+            grid-column-gap: 0;
+          }
+
+      header {
+        position:absolute;
+        grid-area:header;
+        width:100%;
+        padding:0;
+      }
+
+      #logo1{
+        margin: 1rem 2rem;
+        height:2rem;
+      }
+
+
+    header nav {
+        position:absolute;
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        padding-top: 20rem;
+    }
+    header nav a {
+        display:block;
+        text-align:right;
+        padding:1rem 2rem;
+        border-bottom:1px solid;
+        border-color:gray;
+        background-color: lightgray;
+    }
+
+    main {
+      width:auto;
+      grid-area:main;
+      padding-top:20rem;
+      padding-right:0rem;
+      padding-left:0rem;
+      padding-bottom:0rem;
+      align-items: center;
+      width:100%;
+    }
+
+    article{
+
+      margin:1rem 0;
+      text-align: center;
+    }
+    article img {
+      width: 100%;
+    }
+
+    aside{
+      grid-area:aside;
+      margin: 1rem 0;
+      padding:2rem;
+    }
+
+    #cta{
+      grid-area:cta;
+      margin: 1rem 0;
+    }
+
+    footer{
+      grid-area:footer;
+
+    }
