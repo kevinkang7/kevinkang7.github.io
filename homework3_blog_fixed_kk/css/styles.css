@@ -44,9 +44,8 @@ body{
   margin:1rem;
 }
 
-.photo1{
-  width:100%
-  object-fit:cover;
+.photo{
+  width:100%;
 }
 .about{
   font-size:1em;
@@ -216,6 +215,7 @@ aside div{
             "cta"
             "footer";
             grid-column-gap: 0;
+            grid-template-columns:100%;
           }
 
       header {
