@@ -1,0 +1,248 @@
+*{
+box-sizing: border-box;
+margin:0;
+}
+
+html {font-family: 'Slabo 27px', serif;
+      font-size:20px;
+      color: #252525;
+      scroll-behavior: smooth;
+}
+/* body{
+  display:grid;
+  grid-template-areas:
+    "header header header"
+    "aside main right"
+    "stock stock stock"
+    "footer footer footer";
+    grid-template-columns: 25% 50% 25%;
+    grid-row-gap:1rem;
+    grid-column-gap: 1rem;
+} */
+
+/*Jen said use flex because it is simpler, and more applicable for browsers */
+
+header{
+  height:165vh;
+}
+
+  header div{
+  height:100vh;
+  background-image: url(../images/Strawberry-fields-central-park.png);
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+#lyricsID{
+  font-family: 'Gloria Hallelujah', cursive;
+  height:50vh;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-end;
+}
+
+div p.lyrics {
+  background-color: white;
+  /* background-position: bottom right; */
+  font-size:2rem;
+  color:#252525;
+  opacity:0.7;
+  text-align:center;
+}
+div p.lyrics:first-child {
+  padding-top: 1rem;
+}
+
+div p.lyrics:last-child {
+  padding-bottom: 1rem;
+}
+
+#h_title{
+  height:15vh;
+  background-image:none;
+  background-color: #252525;
+  opacity:0.8;
+  /*#d9d9d9*/
+  font-family: 'Gloria Hallelujah', cursive;
+  color:white;
+  font-size:2rem;
+  text-align: center;
+/*sticky only works for one grid/
+  /* position:sticky; */
+}
+
+/* aside {
+  grid-area: aside;
+  padding-left: 1rem;
+  background-color:white;
+  font-size: 1rem;
+  color:inherit;
+  padding:0;
+} */
+
+h2{
+  text-align:center;
+}
+
+#country-list h2{
+  padding-bottom:1rem;
+}
+
+#map-container h2 {
+  text-transform:capitalize;
+   animation: fadein 1s;
+}
+#map-container h3 {
+  text-transform:capitalize;
+   animation: fadein 1s;
+   padding:1rem
+}
+
+
+#description h2{
+  padding-bottom:1rem;
+}
+/* aside a {
+  display: block;
+} */
+
+main {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  padding:1rem;
+}
+
+#h_tile2{
+  display:flex;
+  flex-direction:row;
+}
+
+#country-list {
+  flex-basis: 25vw;
+}
+#map-container {
+  flex-basis: 50vw;
+}
+#description {
+  flex-basis: 25vw;
+}
+
+#country-list{
+  display:flex;
+  flex-direction:column;
+  opacity:1;
+}
+
+#map-container img{
+  width: 100%;
+  opacity:1;
+  /* animation: fadein 0.5s; */
+}
+@keyframes fadein {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+#map-container {
+  padding:0 1rem 0 1rem;
+}
+
+#description {
+  padding: 0 1rem 0 1rem;
+  text-align:left;
+}
+
+#country-list a {
+  padding:0 0 1rem 1rem;
+  text-decoration: none;
+  color:#252525;
+}
+
+#country-list .button_style {
+  padding:0 0 15px 1rem;
+  text-decoration: none;
+  color:#252525;
+  text-align:left;
+  font-size:20px;
+  border:none;
+  background-color:inherit;
+  cursor:pointer;
+  font-family:inherit;
+}
+#country-list .button_style:hover {
+  background-color: #252525;
+  color:white;
+  opacity:0.7;
+}
+
+#country-list .button_style:focus {outline:0;
+}
+
+
+
+
+
+#description div li {
+  text-align:justify;
+  padding-bottom:0.5rem;
+  animation:fadein 2s;
+}
+
+/* right {
+  grid-area: right;
+  padding-left: 0;
+}
+
+right div{
+  padding-top:2rem;
+
+} */
+
+#description p:first-of-type:first-letter{
+  font-size:2rem;
+  font-weight:600;
+  float:left;
+  margin-right:0.25em;
+
+}
+
+footer {
+  background-color:#e5d8bd;
+  text-align: center;
+  height:10vh;
+}
+
+footer nav img {
+  height:2rem;
+  margin: 1rem;
+
+}
+
+.sticky {
+  position: fixed;
+  /* top: 0; */
+  width: 100%
+}
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .aside {
+  padding-top: 102px;
+}
+
+#country-list .active{
+  color: white;
+  background-color:#252525;
+  font-weight:800;
+  /* background-color: white; */
+  opacity:0.8;
+  /* z-index:2; */
+}
+.active_back{
+  background-color: #d9d9d9;
+  transition: background-color 1s ease-in-out;
+}
+
+#music{
+  display:flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Map Demo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
+<script src="js/leaflet.ajax.min.js"></script>
+<script>
+  $(document).ready(function(){
+
+    const mapElement = L.map('map', {center:[39.82, -98.58], zoom:5});
+    const lyrOSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
+    const geojson = new L.GeoJSON.AJAX('data/brazilian_county_2010_sm.geojson',
+      {
+        onEachFeature: onEachFeature,
+        style: style
+      }
+
+    );
+
+    const info = L.control();
+
+    info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+    };
+
+    // method that we will use to update the control based on feature properties passed
+    info.update = function (props) {
+
+      template = props ? `
+        <strong>${props.NAME} County, ${props.STATE_NAME}</strong> <strong>Ancestory Total:</strong> ${parseInt(props.anc_total).toLocaleString('en')}<br><strong>Foreign Born Total:</strong> ${parseInt(props.fb_total).toLocaleString('en')}<br><strong>Brazilian Total:</strong> ${parseInt(props.fb_brazil).toLocaleString('en')}<br><strong>Brazilian % as of Total FB:</strong> ${(parseFloat(props.fb_percent)*100).toFixed(1).toLocaleString('en') + "%"}
+      ` : 'Hover over a County for Details';
+
+      this._div.innerHTML = template;
+
+
+      //this._div.innerHTML = props.properties.NAME;
+    };
+    mapElement.addLayer(lyrOSM);
+    geojson.addTo(mapElement);
+    info.addTo(mapElement);
+
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+      });
+    }
+
+    function style(feature) {
+     return {
+       weight: 1,
+       opacity: 1,
+       color: 'white',
+       dashArray: '3',
+       fillOpacity: 0.7,
+       fillColor: getColor(feature.properties.fb_brazil)
+     };
+    }
+
+    function getColor(fb) {
+      return  fb >= 20000  ? '#BD0026' :
+              fb >= 10000  ? '#BD0026' :
+              fb >= 5500   ? '#E31A1C' :
+              fb >= 1700   ? '#FC4E2A' :
+              fb >= 350    ? '#FD8D3C' :
+              fb >= 1      ? '#FEB24C' :
+              fb = 0       ? '#FED976' :
+                            '#FFEDA0' ;
+     }
+
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+          weight: 5,
+          color: '#666',
+          dashArray: '',
+          fillOpacity: 0.7
+      });
+
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+          layer.bringToFront();
+      }
+
+      info.update(layer.feature.properties);
+    }
+
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+      info.update();
+    }
+
+    function zoomToFeature(e) {
+      mapElement.fitBounds(e.target.getBounds());
+    }
+
+  });
+</script>
+</body>
+</html>
